@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 
 from app.routes.report import router as AnalyzeRouter
+from app.routes.algo_update import router as AlgoUpdateRouter
+
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -14,6 +16,8 @@ app.add_middleware(
 )
 
 app.include_router(AnalyzeRouter, tags=["Analyze"], prefix="/analyze")
+app.include_router(AlgoUpdateRouter, tags=["Algo Update"], prefix="/algoupdate")
+
 
 
 @app.get("/", tags=["Root"])

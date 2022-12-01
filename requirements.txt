@@ -10,3 +10,4 @@ pydantic[email]
 python-jose==3.3.0
 python-multipart==0.0.5
 boto3==1.26.17
+requests

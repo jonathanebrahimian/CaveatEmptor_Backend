@@ -7,6 +7,7 @@ import uuid
 from enum import Enum
 
 class Report(BaseModel):
+    id: str = Field(default_factory=uuid.uuid4, alias="_id")
     address: str
     report: str
     timestamp: datetime
