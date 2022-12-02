@@ -1,11 +1,7 @@
-# import motor.motor_asyncio
-# from bson.objectid import ObjectId
-# import json
 # import pymongo
-# from bson.json_util import dumps
-# from bson import json_util
+# import os
 
-# MONGO_DETAILS = "mongodb://root:rootpassword@mongodb_container:27017"
+# MONGO_DETAILS = os.environ.get('MONGODB_URI_SRV')
 
 # client = pymongo.MongoClient(MONGO_DETAILS)
 
