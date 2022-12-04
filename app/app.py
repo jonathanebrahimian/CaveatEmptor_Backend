@@ -2,17 +2,39 @@ from fastapi import FastAPI
 
 from app.routes.report import router as AnalyzeRouter
 from app.routes.algo_update import router as AlgoUpdateRouter
-
+from enum import Enum
+import os
 
 from fastapi.middleware.cors import CORSMiddleware
+
+class Env(Enum):
+    LOCAL = "LOCAL"
+    PROD = "PROD"
+
+    def deployed(self):
+        if self in [Env.PROD]:
+            return True
+        else:
+            return False
+
+ENV = Env(os.environ.get("ENV"))
+
+if ENV.deployed():
+    allow_origins = ['']
+    allow_methods = ['']
+    allow_headers = ['']
+else:
+    allow_origins = ['*']
+    allow_methods = ['*']
+    allow_headers = ['*']
 
 app = FastAPI()
 app.add_middleware(
 	CORSMiddleware,
-	allow_origins=['*'],
+	allow_origins=allow_origins,
 	allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=allow_methods,
+    allow_headers=allow_headers,
 )
 
 app.include_router(AnalyzeRouter, tags=["Analyze"], prefix="/analyze")

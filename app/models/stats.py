@@ -6,7 +6,7 @@ from app.models.classes import LabsSchema
 import uuid
 from enum import Enum
 
-class Report(BaseModel):
+class Stats(BaseModel):
     id: str = Field(default_factory=uuid.uuid4, alias="_id")
     address: str
     report: str

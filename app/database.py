@@ -11,5 +11,6 @@ report_collection = database.get_collection("report")
 report_collection.create_index([("address", pymongo.ASCENDING)], unique=True)
 
 stats_collection = database.get_collection("stats")
-algo_update_collection = database.get_collection("algo_update")
+stats_collection.create_index([("contract", pymongo.ASCENDING)], unique=True)
+
 

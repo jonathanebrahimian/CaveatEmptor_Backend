@@ -1,17 +1,13 @@
 from fastapi import APIRouter
 
-from app.database import algo_update_collection,report_collection,database
-import requests
-import json
-from datetime import datetime
+from app.database import report_collection,stats_collection
 
 router = APIRouter()
-
-
 
 @router.get("/", response_description="Get analysis")
 async def algo_update():
     report_collection.delete_many({})
+    stats_collection.delete_many({})
     return True
 
 
