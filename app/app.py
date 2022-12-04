@@ -20,9 +20,9 @@ class Env(Enum):
 ENV = Env(os.environ.get("ENV"))
 
 if ENV.deployed():
-    allow_origins = ['']
-    allow_methods = ['']
-    allow_headers = ['']
+    allow_origins = ['https://www.caveatemptor.info']
+    allow_methods = ['https://www.caveatemptor.info']
+    allow_headers = ['https://www.caveatemptor.info']
 else:
     allow_origins = ['*']
     allow_methods = ['*']
