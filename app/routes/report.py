@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from app.database import report_collection,stats_collection
 import requests
@@ -20,8 +20,7 @@ async def get_analysis(token: str):
         print("not cached")
         report = call_lambda(token)
         if not report:
-            return {'message':"Error producing report",'status':500}
-    
+            raise HTTPException(status_code=500,detail="Item not found")
     report = json.loads(report)
     query_stats(report)
     return {
