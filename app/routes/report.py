@@ -20,7 +20,7 @@ async def get_analysis(token: str):
         print("not cached")
         report = call_lambda(token)
         if not report:
-            raise HTTPException(status_code=500,detail="Item not found")
+            raise HTTPException(status_code=500,detail="Algorithm returned 500")
     report = json.loads(report)
     query_stats(report)
     return {
