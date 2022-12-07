@@ -20,18 +20,19 @@ class Env(Enum):
 ENV = Env(os.environ.get("ENV"))
 
 if ENV.deployed():
-    allow_origins = ['https://www.caveatemptor.info']
+    origins = ['https://www.caveatemptor.info']
     # allow_methods = ['https://www.caveatemptor.info']
     # allow_headers = ['https://www.caveatemptor.info']
 else:
-    allow_origins = ['*']
+    origins = ['*']
+origins = ['*']
 allow_methods = ['*']
 allow_headers = ['*']
 
 app = FastAPI()
 app.add_middleware(
 	CORSMiddleware,
-	allow_origins=allow_origins,
+	allow_origins=origins,
 	allow_credentials=True,
     allow_methods=allow_methods,
     allow_headers=allow_headers,
